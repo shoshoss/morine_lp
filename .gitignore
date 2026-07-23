@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Claude Code - local settings
+.claude/settings.local.json
+
+# Claude Code - reinstallable third-party skills
+.claude/skills/banner-design/
+.claude/skills/brand/
+.claude/skills/design/
+.claude/skills/design-system/
+.claude/skills/slides/
+.claude/skills/ui-styling/
+.claude/skills/ui-ux-pro-max/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Dependencies / build
+node_modules/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.log
+*.zip
