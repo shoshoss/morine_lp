@@ -29,9 +29,7 @@
   --color-tan: #f6ecd9;
   --color-border: #e6e0d4;
   --color-footer-bg: #06272a;
-  --color-footer-bg-soft: #0b3336;
   --color-badge: #7faa9e;
-  --color-star: #d9a544;
 
   /* type */
   --font-serif: "Shippori Mincho", "Hiragino Mincho ProN", serif;
@@ -527,7 +525,8 @@ main > section,
   margin-bottom: 1.75rem;
 }
 .feature-card__photo { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
-.feature-card__figure--wide .feature-card__photo { aspect-ratio: 3 / 2; }
+.feature-card__figure.feature-card__figure--wide { max-width: 320px; margin-inline: auto; }
+.feature-card__figure--wide .feature-card__photo { aspect-ratio: 3 / 4; }
 
 .feature-card__body {
   font-size: 0.95rem;
@@ -811,7 +810,8 @@ main > section,
 }
 .access__step-heading { font-size: 1rem; color: var(--color-ink); margin-bottom: 0.4rem; }
 .access__step-text { font-size: 0.82rem; color: var(--color-text-soft); line-height: 1.7; margin-bottom: 0.75rem; }
-.access__step-photo { border-radius: var(--radius-md); width: 100%; max-width: 260px; aspect-ratio: 4 / 3; object-fit: cover; }
+.access__step-photo { border-radius: var(--radius-md); width: 100%; max-width: 220px; height: auto; }
+.access__parking-photo { border-radius: var(--radius-md); width: 100%; max-width: 220px; height: auto; margin-bottom: 0.85rem; }
 
 .access__aside { display: flex; flex-direction: column; gap: 1.5rem; }
 .access__map,
@@ -1051,7 +1051,10 @@ main > section,
    -------------------------------------------------------------------------- */
 .cta-final {
   position: relative;
-  background: var(--color-footer-bg);
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 62%, rgba(183, 154, 85, 0.22), transparent 70%),
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 255, 255, 0.06), transparent 65%),
+    var(--color-footer-bg);
   color: var(--color-cream);
   text-align: center;
   overflow: hidden;
@@ -1073,7 +1076,7 @@ main > section,
   width: 100%;
   background: var(--color-cream-soft);
   color: var(--color-ink);
-  box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 60px 8px rgba(183, 154, 85, 0.28), 0 20px 45px -18px rgba(0, 0, 0, 0.5);
 }
 .cta-final__button:hover { background: var(--color-white); color: var(--color-ink); transform: translateY(-2px); }
 
