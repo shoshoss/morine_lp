@@ -310,9 +310,8 @@ main > section,
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(251, 246, 238, 0.4) 0%,
-    rgba(251, 246, 238, 0) 14%,
-    rgba(251, 246, 238, 0) 76%,
+    transparent 0%,
+    transparent 76%,
     var(--color-cream) 90%,
     var(--color-cream) 100%
   );
@@ -403,15 +402,7 @@ main > section,
 }
 
 @media (min-width: 900px) {
-  .hero__media-overlay {
-    background: linear-gradient(
-      to right,
-      var(--color-cream) 0%,
-      rgba(251, 246, 238, 0.9) 32%,
-      rgba(251, 246, 238, 0.35) 52%,
-      rgba(251, 246, 238, 0) 68%
-    );
-  }
+  .hero__media-overlay { background: none; }
   .hero__inner { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .hero__logo { width: clamp(170px, 17vw, 210px); }
   .hero__copy { max-width: 620px; margin-top: 2.5rem; }
