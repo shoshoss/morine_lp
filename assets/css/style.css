@@ -521,12 +521,17 @@ main > section,
 }
 
 /* --------------------------------------------------------------------------
-   7b. ⑤ Strength (full-bleed background photo section)
+   7b. ⑤ Strength
    -------------------------------------------------------------------------- */
 .strength {
   position: relative;
   overflow: hidden;
+  width: calc(100% - (var(--gutter) * 2));
+  max-width: 960px;
+  margin-inline: auto;
   padding-block: 0;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
 }
 .strength__media {
   position: absolute;
@@ -542,6 +547,7 @@ main > section,
 .strength__inner {
   position: relative;
   z-index: 1;
+  max-width: var(--container-max-narrow);
   padding-block: clamp(3.5rem, 14vw, 5rem) clamp(3rem, 12vw, 4.5rem);
 }
 .strength__heading {
@@ -549,7 +555,7 @@ main > section,
   font-size: clamp(1.9rem, 8vw, 2.3rem);
   line-height: 1.5;
   color: var(--color-ink);
-  margin-top: 1rem;
+  margin-top: 0;
   text-shadow: 0 2px 20px rgba(251, 246, 238, 0.85), 0 1px 4px rgba(251, 246, 238, 0.9);
 }
 .strength__divider { width: 130px; height: auto; margin: 1.1rem 0 1.5rem; }
@@ -569,7 +575,7 @@ main > section,
 }
 
 @media (min-width: 900px) {
-  .strength { min-height: 720px; display: flex; align-items: center; }
+  .strength { min-height: 640px; display: flex; align-items: center; }
   .strength__media-img { object-position: center; }
   .strength__inner { padding-block: 4rem; }
   .strength__body, .strength__review { max-width: 440px; }
