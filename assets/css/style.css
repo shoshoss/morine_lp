@@ -640,16 +640,7 @@ main > section,
 }
 .menu-card__price-num { font-size: 1.4rem; font-weight: 700; color: var(--color-ink); }
 .menu-card__price-tax { font-size: 0.75rem; color: var(--color-muted); }
-.menu-card__note { font-size: 0.8rem; color: var(--color-text-soft); line-height: 1.7; margin-bottom: 1.25rem; }
-.menu-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-primary);
-}
-.menu-card__link-arrow { flex-shrink: 0; }
+.menu-card__note { font-size: 0.8rem; color: var(--color-text-soft); line-height: 1.7; }
 
 .menu__supplement {
   margin-top: 2rem;
