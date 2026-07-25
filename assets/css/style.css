@@ -124,52 +124,6 @@ main > section,
    4. Shared components
    -------------------------------------------------------------------------- */
 
-/* eyebrow (section number + english label) */
-.c-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 0 0 1.25rem;
-  color: var(--color-brand);
-}
-.c-eyebrow__num {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1;
-}
-.c-eyebrow__rule {
-  width: 28px;
-  height: 1px;
-  background: var(--color-gold);
-  display: inline-block;
-}
-.c-eyebrow__label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-brand);
-  white-space: nowrap;
-}
-.c-eyebrow--badge {
-  justify-content: center;
-}
-.c-eyebrow--badge .c-eyebrow__rule {
-  width: 44px;
-}
-.c-eyebrow__num--badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  background: var(--color-ink);
-  color: var(--color-cream);
-  font-size: 1rem;
-}
-
 /* section heading */
 .c-section-heading {
   font-size: clamp(1.6rem, 5.2vw, 2.25rem);
@@ -518,16 +472,6 @@ main > section,
   color: var(--color-ink);
   margin-bottom: 1.75rem;
 }
-.feature-card__figure {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  margin-bottom: 1.75rem;
-}
-.feature-card__photo { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
-.feature-card__figure.feature-card__figure--wide { max-width: 320px; margin-inline: auto; }
-.feature-card__figure--wide .feature-card__photo { aspect-ratio: 3 / 4; }
-
 .feature-card__body {
   font-size: 0.95rem;
   line-height: 1.9;
@@ -576,10 +520,59 @@ main > section,
   text-align: right;
 }
 
-.feature-card__divider { width: 130px; height: auto; margin: 0.5rem 0 1.75rem; }
+/* --------------------------------------------------------------------------
+   7b. ⑤ Strength (full-bleed background photo section)
+   -------------------------------------------------------------------------- */
+.strength {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0;
+}
+.strength__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.strength__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.strength__inner {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(3.5rem, 14vw, 5rem) clamp(3rem, 12vw, 4.5rem);
+}
+.strength__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 8vw, 2.3rem);
+  line-height: 1.5;
+  color: var(--color-ink);
+  margin-top: 1rem;
+  text-shadow: 0 2px 20px rgba(251, 246, 238, 0.85), 0 1px 4px rgba(251, 246, 238, 0.9);
+}
+.strength__divider { width: 130px; height: auto; margin: 1.1rem 0 1.5rem; }
+.strength__body {
+  max-width: 420px;
+  font-size: 0.95rem;
+  line-height: 1.95;
+  color: var(--color-ink-soft);
+  text-shadow: 0 1px 12px rgba(251, 246, 238, 0.85);
+}
+.strength__body p + p { margin-top: 1.1rem; }
+.strength__review {
+  max-width: 420px;
+  margin-top: clamp(2.5rem, 10vw, 3.5rem);
+  background: rgba(254, 253, 253, 0.92);
+  backdrop-filter: blur(6px);
+}
 
 @media (min-width: 900px) {
-  .feature-card__figure { max-width: 560px; margin-inline: auto; margin-bottom: 2rem; }
+  .strength { min-height: 720px; display: flex; align-items: center; }
+  .strength__media-img { object-position: center; }
+  .strength__inner { padding-block: 4rem; }
+  .strength__body, .strength__review { max-width: 440px; }
 }
 
 /* --------------------------------------------------------------------------
@@ -689,14 +682,6 @@ main > section,
   background: var(--color-gold);
   transform: translate(-50%, -50%) rotate(45deg);
 }
-.space__figure {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  margin-bottom: 1.75rem;
-}
-.space__photo { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; }
-
 .space__info-list {
   background: var(--color-cream-soft);
   border-radius: var(--radius-lg);
@@ -853,7 +838,6 @@ main > section,
 .space > .l-container > .review-card { margin-top: 2.5rem; }
 
 @media (min-width: 900px) {
-  .space__figure,
   .space__info-list,
   .space__amenity,
   .access,
@@ -1119,8 +1103,6 @@ main > section,
 }
 .site-footer__links a { display: inline-flex; align-items: center; gap: 0.4rem; }
 
-.site-footer__legal { margin-bottom: 0.5rem; }
-.site-footer__legal a { text-decoration: underline; text-underline-offset: 3px; }
 .site-footer__copyright { font-size: 0.72rem; color: rgba(251, 246, 238, 0.4); }
 
 @media (min-width: 900px) {
