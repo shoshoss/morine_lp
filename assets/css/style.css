@@ -627,7 +627,22 @@ main > section,
 }
 .menu-card__title { font-size: 1.15rem; line-height: 1.5; color: var(--color-ink); margin-bottom: 0.6rem; }
 .menu-card__name { font-size: 0.85rem; color: var(--color-text-soft); margin-bottom: 0.6rem; }
-.menu-card__price { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem; }
+.menu-card__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.5rem;
+  row-gap: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+.menu-card__price-original {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.menu-card__price-original-num { text-decoration: line-through; text-decoration-color: var(--color-muted); }
+.menu-card__price-arrow { font-size: 0.85rem; color: var(--color-gold); font-weight: 700; }
+.menu-card__price-now { display: inline-flex; align-items: baseline; gap: 0.4rem; white-space: nowrap; }
 .menu-card__badge {
   display: inline-flex;
   align-items: center;
@@ -638,8 +653,8 @@ main > section,
   font-weight: 700;
   border-radius: var(--radius-pill);
 }
-.menu-card__price-num { font-size: 1.4rem; font-weight: 700; color: var(--color-ink); }
-.menu-card__price-tax { font-size: 0.75rem; color: var(--color-muted); }
+.menu-card__price-num { font-size: 1.4rem; font-weight: 700; color: var(--color-brand); }
+.menu-card__price-tax { font-size: 0.7rem; color: var(--color-muted); }
 .menu-card__note { font-size: 0.8rem; color: var(--color-text-soft); line-height: 1.7; }
 
 .menu__supplement {
