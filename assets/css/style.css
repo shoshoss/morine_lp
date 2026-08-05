@@ -222,7 +222,7 @@ main > section,
   bottom: 1.25rem;
   width: 64px;
   height: auto;
-  opacity: 0.5;
+  opacity: 0.4;
   pointer-events: none;
 }
 .review-card--voice {
@@ -622,99 +622,444 @@ main > section,
 }
 
 /* --------------------------------------------------------------------------
-   8. ⑥ Menu
+   8. ⑥ Menu（悩み別入口・セットメニュー）
    -------------------------------------------------------------------------- */
-.menu__lead {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--color-text-soft);
+.menu {
+  --s6-green: #124a38;
+  --s6-gold: #b5842c;
+  --s6-gray: #545353;
+  --s6-gray-strong: #444545;
+  position: relative;
+  overflow: hidden;
 }
+.menu > .l-container { position: relative; z-index: 1; }
+
+/* 見出し右上の装飾写真（全幅ブリード） */
+.menu__decor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  max-width: 620px;
+  height: clamp(118px, 30vw, 240px);
+  z-index: 0;
+}
+.menu__decor-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  border-bottom-left-radius: 44px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%);
+  mask-image: linear-gradient(to right, transparent 0, #000 24%);
+}
+
+.menu__head { position: relative; z-index: 1; }
+.menu__heading {
+  margin: 0;
+  max-width: 60%;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--s6-green);
+  font-size: clamp(1.4rem, 5.6vw, 1.9rem);
+  line-height: 1.5;
+}
+.menu__heading-num {
+  color: var(--s6-gold);
+  font-size: 1.35em;
+  padding: 0 0.05em;
+}
+.menu__heading-rule {
+  display: block;
+  width: 66px;
+  height: 2px;
+  margin: 0.9rem 0;
+  background: linear-gradient(to right, var(--s6-gold), rgba(181, 132, 44, 0));
+}
+.menu__lead {
+  max-width: 62%;
+  font-size: 0.88rem;
+  color: var(--s6-gray);
+  line-height: 1.9;
+}
+
+/* 悩み別カード（写真左・テキスト右の横型） */
 .menu__list {
-  margin-top: 2rem;
+  list-style: none;
+  margin: clamp(1.75rem, 5vw, 2.75rem) 0 0;
+  padding: 0;
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 .menu-card {
-  background: var(--color-cream-soft);
-  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 18px 40px -26px rgba(20, 50, 40, 0.35);
 }
-.menu-card__media { position: relative; aspect-ratio: 4 / 3; }
-.menu-card__photo { width: 100%; height: 100%; object-fit: cover; }
-/* 実写（縦長）写真は施術箇所が中央に来るよう object-position を個別調整 */
-.menu-card__photo--foot { object-position: center 32%; }
-.menu-card__photo--head { object-position: center 42%; }
+.menu-card__media { position: relative; min-height: 168px; }
+.menu-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.menu-card__photo--foot { object-position: center 30%; }
+.menu-card__photo--head { object-position: center 40%; }
 .menu-card__photo--hand { object-position: center 40%; }
-.menu-card__icon {
+.menu-card__num {
   position: absolute;
-  left: 1.25rem;
-  bottom: -1.25rem;
-  width: 3rem;
-  height: 3rem;
+  top: 0.7rem;
+  left: 0.7rem;
+  width: 2.4rem;
+  height: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-cream-soft);
-  border-radius: 50%;
-  box-shadow: var(--shadow-card);
-}
-.menu-card__icon img { width: 22px; height: 22px; }
-
-.menu-card__body { padding: 2rem 1.5rem 1.75rem; }
-.menu-card__index {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: var(--color-gold);
-  line-height: 1;
-  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: rgba(24, 46, 38, 0.32);
 }
-.menu-card__title { font-size: 1.15rem; line-height: 1.5; color: var(--color-ink); margin-bottom: 0.6rem; }
-.menu-card__name { font-size: 0.85rem; color: var(--color-text-soft); margin-bottom: 0.6rem; }
+.menu-card__body { padding: clamp(1rem, 3.6vw, 1.5rem) clamp(1rem, 3.6vw, 1.6rem); }
+.menu-card__title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--s6-green);
+  font-size: clamp(1.02rem, 4.4vw, 1.22rem);
+  line-height: 1.5;
+}
+.menu-card__name {
+  margin: 0 0 0.7rem;
+  font-size: 0.85rem;
+  color: var(--s6-gray-strong);
+}
 .menu-card__price {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   column-gap: 0.5rem;
-  row-gap: 0.15rem;
-  margin-bottom: 0.5rem;
+  row-gap: 0.2rem;
+  margin: 0 0 0.7rem;
 }
 .menu-card__price-original {
   font-size: 0.8rem;
-  color: var(--color-muted);
+  color: var(--s6-gray);
   white-space: nowrap;
 }
-.menu-card__price-original-num { text-decoration: line-through; text-decoration-color: var(--color-muted); }
-.menu-card__price-arrow { font-size: 0.85rem; color: var(--color-gold); font-weight: 700; }
-.menu-card__price-now { display: inline-flex; align-items: baseline; gap: 0.4rem; white-space: nowrap; }
+.menu-card__price-original-num { text-decoration: line-through; }
+.menu-card__price-arrow { color: var(--s6-gold); font-weight: 700; }
+.menu-card__price-now {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
 .menu-card__badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.65rem;
-  background: var(--color-badge);
-  color: var(--color-white);
-  font-size: 0.7rem;
+  padding: 0.22rem 0.62rem;
+  background: var(--s6-green);
+  color: var(--color-cream);
+  font-size: 0.72rem;
   font-weight: 700;
   border-radius: var(--radius-pill);
 }
-.menu-card__price-num { font-size: 1.4rem; font-weight: 700; color: var(--color-brand); }
-.menu-card__price-tax { font-size: 0.7rem; color: var(--color-muted); }
-.menu-card__note { font-size: 0.8rem; color: var(--color-text-soft); line-height: 1.7; }
-
-.menu__supplement {
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  color: var(--color-text-soft);
-  line-height: 1.9;
-  display: flex;
-  gap: 0.5rem;
+.menu-card__price-num {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--s6-green);
 }
-.menu__supplement-icon { flex-shrink: 0; margin-top: 0.2rem; }
-.menu__cta { width: 100%; margin-top: 1.75rem; }
+.menu-card__price-tax { font-size: 0.68rem; color: var(--s6-gray); }
+.menu-card__note {
+  margin: 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8rem;
+  color: var(--s6-gray);
+  line-height: 1.7;
+}
 
+/* セットメニュー（05） */
+.menu-set {
+  position: relative;
+  margin-top: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid var(--color-gold-soft);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 33% 1fr;
+  grid-template-areas:
+    "intro intro"
+    "media detail"
+    "price price";
+}
+.menu-set__intro {
+  grid-area: intro;
+  position: relative;
+  text-align: center;
+  padding: clamp(1.1rem, 4vw, 1.5rem) 2.3rem 0.6rem;
+}
+.menu-set__spark {
+  position: absolute;
+  top: clamp(1.1rem, 4.4vw, 1.5rem);
+  width: clamp(26px, 7vw, 44px);
+  height: auto;
+}
+.menu-set__spark--l { left: 0.5rem; }
+.menu-set__spark--r { right: 0.5rem; transform: scaleX(-1); }
+.menu-set__intro-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--s6-green);
+  font-size: clamp(0.98rem, 4.0vw, 1.45rem);
+  line-height: 1.55;
+}
+.menu-set__intro-sub {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  color: var(--s6-gray);
+  line-height: 1.8;
+}
+.menu-set__media {
+  grid-area: media;
+  position: relative;
+  min-height: 220px;
+}
+.menu-set__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+.menu-set__badge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  width: clamp(74px, 21vw, 98px);
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(253, 249, 244, 0.93);
+  box-shadow: 0 8px 20px -10px rgba(20, 50, 40, 0.5);
+}
+.menu-set__badge-text {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--s6-green);
+  font-size: clamp(0.78rem, 2.4vw, 0.92rem);
+  line-height: 1.35;
+}
+.menu-set__badge-laurel { width: 58%; height: auto; margin-top: 2px; }
+.menu-set__detail {
+  grid-area: detail;
+  padding: clamp(1rem, 3.6vw, 1.4rem) clamp(1rem, 3.6vw, 1.5rem) 0.5rem;
+}
+.menu-set__name {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.5rem;
+  margin: 0 0 0.55rem;
+  font-family: var(--font-serif);
+}
+.menu-set__num { color: var(--s6-gold); font-size: 1.45rem; font-weight: 700; line-height: 1; }
+.menu-set__name-main {
+  color: var(--s6-green);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.menu-set__name-min { color: var(--s6-gray); font-size: 0.88rem; }
+.menu-set__desc {
+  margin: 0 0 0.9rem;
+  font-size: 0.84rem;
+  color: var(--s6-gray-strong);
+  line-height: 1.7;
+}
+.menu-set__icons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+}
+.menu-set__icon {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.64rem;
+  color: var(--s6-gray-strong);
+}
+.menu-set__icon img { height: 26px; width: auto; }
+.menu-set__icon + .menu-set__icon::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  transform: translateX(-50%);
+  color: var(--s6-gold);
+  font-weight: 700;
+}
+.menu-set__price {
+  grid-area: price;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  column-gap: 0.55rem;
+  row-gap: 0.3rem;
+  padding: 0.9rem clamp(1rem, 3.6vw, 1.5rem) clamp(1.1rem, 3.6vw, 1.4rem);
+  border-top: 1px solid var(--color-border);
+}
+.menu-set__price-original { font-size: 0.84rem; color: var(--s6-gray); white-space: nowrap; }
+.menu-set__price-original-num { text-decoration: line-through; }
+.menu-set__price-arrow {
+  color: var(--s6-gold);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+.menu-set__price-now { display: inline-flex; align-items: baseline; gap: 0.45rem; white-space: nowrap; }
+.menu-set__price-num { font-size: 1.5rem; font-weight: 700; color: var(--s6-green); }
+.menu-set__price-note {
+  flex-basis: 100%;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: var(--s6-gray);
+  line-height: 1.6;
+}
+.menu-set__leaf {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: clamp(84px, 12vw, 150px);
+  height: auto;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* 補足（チェック2項目） */
+.menu__assurances {
+  list-style: none;
+  margin: clamp(1.5rem, 5vw, 2.5rem) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.menu__assurance {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 1rem 1.15rem;
+  background: rgba(240, 235, 225, 0.55);
+  border-radius: var(--radius-md);
+}
+.menu__assurance-icon { width: 20px; height: auto; flex-shrink: 0; margin-top: 1px; }
+.menu__assurance span { font-size: 0.82rem; color: var(--s6-gray-strong); line-height: 1.7; }
+
+.menu__cta {
+  width: 100%;
+  margin-top: clamp(1.5rem, 4.5vw, 2.25rem);
+  background: var(--s6-green);
+}
+.menu__cta-note {
+  margin-top: 0.9rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--s6-gray);
+}
+
+/* タブレット以上：補足を2列に */
+@media (min-width: 600px) {
+  .menu__assurances { grid-template-columns: 1fr 1fr; }
+}
+
+/* PC */
 @media (min-width: 900px) {
-  .menu__list { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-  .menu__cta { width: auto; }
+  .menu__heading { font-size: clamp(2.05rem, 2.9vw, 2.45rem); max-width: 64%; }
+  .menu__lead { font-size: 1.05rem; max-width: 58%; }
+  .menu__decor { height: clamp(180px, 15vw, 230px); }
+
+  .menu__list { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+  .menu-card { grid-template-columns: 40% 1fr; }
+  .menu-card__body { padding: 1.5rem 1.6rem; }
+  .menu-card__title { font-size: 1.5rem; }
+  .menu-card__name { font-size: 1rem; }
+  .menu-card__price-original { font-size: 0.9rem; }
+  .menu-card__badge { font-size: 0.8rem; }
+  .menu-card__price-num { font-size: 1.7rem; }
+  .menu-card__price-tax { font-size: 0.78rem; }
+  .menu-card__note { font-size: 0.92rem; }
+
+  /* セットカード：写真左｜（intro/detail）中央｜価格右 */
+  .menu-set {
+    grid-template-columns: 30% 1fr auto;
+    grid-template-areas:
+      "media intro  price"
+      "media detail price";
+  }
+  .menu-set__intro {
+    text-align: left;
+    padding: clamp(1.4rem, 2.4vw, 1.8rem) 1.6rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-right: clamp(1rem, 3vw, 2.2rem);
+  }
+  .menu-set__spark { display: none; }
+  .menu-set__intro-title { font-size: 1.6rem; }
+  .menu-set__intro-sub { font-size: 1rem; }
+  .menu-set__detail {
+    padding: 1.1rem 1.6rem 1.4rem;
+    margin-right: clamp(1rem, 3vw, 2.2rem);
+  }
+  .menu-set__name-main { font-size: 1.75rem; white-space: normal; }
+  .menu-set__num { font-size: 2.1rem; }
+  .menu-set__name-min { font-size: 1rem; }
+  .menu-set__desc { font-size: 0.96rem; }
+  .menu-set__icons { max-width: 440px; }
+  .menu-set__icon { font-size: 0.78rem; }
+  .menu-set__icon img { height: 32px; }
+  .menu-set__price {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 0.2rem;
+    border-top: 0;
+    border-left: 1px solid var(--color-border);
+    padding: clamp(1.4rem, 2.4vw, 1.9rem) clamp(1.4rem, 2.4vw, 2rem);
+    min-width: 232px;
+  }
+  .menu-set__price-arrow { transform: none; }
+  .menu-set__price-original { font-size: 0.95rem; }
+  .menu-set__price-note { flex-basis: auto; margin-top: 0.35rem; font-size: 0.8rem; }
+  .menu-set__price-num { font-size: 2.45rem; }
+  .menu__assurance span { font-size: 0.96rem; }
+  .menu__cta { font-size: 1.05rem; }
+  .menu__cta-note { font-size: 0.9rem; }
+
+  .menu__cta {
+    width: auto;
+    min-width: 420px;
+    margin-inline: auto;
+    display: flex;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1099,6 +1444,121 @@ main > section,
 
 @media (min-width: 900px) {
   .faq__cta { width: auto; display: flex; margin-inline: auto; }
+}
+
+/* --------------------------------------------------------------------------
+   12b. ⑫ Booking notice（ご利用前の確認事項）
+   -------------------------------------------------------------------------- */
+.booking-notice__label {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin: 0 0 0.9rem;
+}
+.booking-notice__heading { margin-top: 0; }
+.booking-notice__lead {
+  max-width: 640px;
+  margin: 1rem auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-soft);
+  line-height: 1.95;
+}
+.booking-notice__summary-list {
+  max-width: 640px;
+  margin: 2rem auto 0;
+  padding: 1.5rem 1.5rem 1.6rem;
+  list-style: none;
+  background: var(--color-sage);
+  border: 1px solid var(--color-sage-strong);
+  border-radius: var(--radius-md);
+  display: grid;
+  gap: 0.85rem;
+}
+.booking-notice__summary-item {
+  position: relative;
+  padding-left: 1.6rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.6;
+}
+.booking-notice__summary-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-brand);
+}
+.booking-notice__details {
+  max-width: 640px;
+  margin: 1.25rem auto 0;
+}
+.booking-notice__summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-cream-soft);
+  font-weight: 700;
+  color: var(--color-brand);
+  font-size: 0.9rem;
+}
+.booking-notice__summary::-webkit-details-marker { display: none; }
+.booking-notice__toggle {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.booking-notice__toggle::before,
+.booking-notice__toggle::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
+}
+.booking-notice__toggle::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+.booking-notice__toggle::after { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+.booking-notice__details[open] .booking-notice__toggle::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+.booking-notice__details-list {
+  margin: 1.5rem 0 0;
+  padding: 0 0 0 1.4rem;
+  list-style: decimal;
+}
+.booking-notice__details-item { padding-left: 0.3rem; }
+.booking-notice__details-item + .booking-notice__details-item { margin-top: 1.25rem; }
+.booking-notice__details-item::marker { color: var(--color-gold); font-weight: 700; }
+.booking-notice__details-title {
+  font-weight: 700;
+  color: var(--color-ink);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0 0 0.4rem;
+}
+.booking-notice__details-text {
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+  line-height: 1.9;
+  margin: 0;
+}
+.booking-notice__note {
+  max-width: 640px;
+  margin: 2rem auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  line-height: 1.9;
 }
 
 /* --------------------------------------------------------------------------
