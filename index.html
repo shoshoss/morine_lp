@@ -138,7 +138,7 @@
 							height="20"
 							alt=""
 						/>
-						<span>予約ページで空き状況を見る</span>
+						<span>予約へ進む</span>
 						<svg
 							class="c-button__chevron"
 							width="14"
@@ -697,17 +697,6 @@
 								loading="lazy"
 								alt="複数の施術を組み合わせるモリーヌのセットメニュー"
 							/>
-							<span class="menu-set__badge">
-								<span class="menu-set__badge-text">迷ったら<br />こちら。</span>
-								<img
-									class="menu-set__badge-laurel"
-									src="assets/images/materials/ornaments/37-laurel-gold.png"
-									width="181"
-									height="103"
-									alt=""
-									aria-hidden="true"
-								/>
-							</span>
 						</div>
 
 						<div class="menu-set__detail">
@@ -823,7 +812,7 @@
 							height="20"
 							alt=""
 						/>
-						<span>メニューと空き状況を見る</span>
+						<span>予約へ進む</span>
 						<svg
 							class="c-button__chevron"
 							width="14"
@@ -1679,7 +1668,7 @@
 							height="20"
 							alt=""
 						/>
-						<span>予約枠を確認する</span>
+						<span>予約へ進む</span>
 					</a>
 				</div>
 			</section>
@@ -1808,7 +1797,7 @@
 						height="20"
 						alt=""
 					/>
-					<span>予約ページで空き状況を見る</span>
+					<span>予約へ進む</span>
 					<svg
 						class="c-button__chevron"
 						width="14"
@@ -1893,8 +1882,203 @@
 					height="18"
 					alt=""
 				/>
-				<span>空き状況を見る</span>
+				<span>予約へ進む</span>
 			</a>
+		</div>
+
+		<!-- 予約確認モーダル（PC=中央モーダル／SP=ボトムシート） -->
+		<div class="booking-confirmation" id="booking-confirmation" hidden>
+			<div
+				class="booking-confirmation__backdrop"
+				data-bc-close="backdrop"
+			></div>
+			<section
+				class="booking-confirmation__dialog"
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="bc-title"
+				aria-describedby="bc-desc"
+				tabindex="-1"
+			>
+				<span class="booking-confirmation__handle" aria-hidden="true"></span>
+				<button
+					class="booking-confirmation__close"
+					type="button"
+					aria-label="確認画面を閉じる"
+					data-bc-close="close_button"
+				>
+					<span aria-hidden="true"></span>
+				</button>
+
+				<div class="booking-confirmation__scroll">
+					<img
+						class="booking-confirmation__leaf"
+						src="assets/images/materials/ornaments/40-leaf-branch-sage.png"
+						width="172"
+						height="143"
+						alt=""
+						aria-hidden="true"
+					/>
+					<h2 class="booking-confirmation__title" id="bc-title">
+						ご予約前に、ご確認ください
+					</h2>
+					<span class="booking-confirmation__divider" aria-hidden="true"></span>
+					<p class="booking-confirmation__lead" id="bc-desc">
+						安全に施術を受けていただくため、<br />
+						以下に該当する場合は施術をお受けいただけないことがあります。
+					</p>
+
+					<ul class="booking-confirmation__cards">
+						<li class="booking-confirmation__card">
+							<img
+								class="booking-confirmation__card-icon"
+								src="assets/images/materials/icons/47-badge-wine.png"
+								width="141"
+								height="141"
+								alt=""
+								aria-hidden="true"
+							/>
+							<span class="booking-confirmation__card-text"
+								>飲酒中、または<br class="u-br-pc" />施術後に飲酒予定の方</span
+							>
+						</li>
+						<li class="booking-confirmation__card">
+							<img
+								class="booking-confirmation__card-icon"
+								src="assets/images/materials/icons/48-badge-pregnant.png"
+								width="141"
+								height="141"
+								alt=""
+								aria-hidden="true"
+							/>
+							<span class="booking-confirmation__card-text">妊娠中の方</span>
+						</li>
+						<li class="booking-confirmation__card">
+							<img
+								class="booking-confirmation__card-icon"
+								src="assets/images/materials/icons/49-badge-virus.png"
+								width="141"
+								height="141"
+								alt=""
+								aria-hidden="true"
+							/>
+							<span class="booking-confirmation__card-text"
+								>感染症の疑いが<br class="u-br-pc" />ある方</span
+							>
+						</li>
+						<li class="booking-confirmation__card">
+							<img
+								class="booking-confirmation__card-icon"
+								src="assets/images/materials/icons/50-badge-injury.png"
+								width="141"
+								height="141"
+								alt=""
+								aria-hidden="true"
+							/>
+							<span class="booking-confirmation__card-text"
+								>医師から施術を<br class="u-br-pc" />止められている<br class="u-br-pc" />けががある方</span
+							>
+						</li>
+					</ul>
+
+					<details class="booking-confirmation__details">
+						<summary class="booking-confirmation__summary">
+							<span>詳しい確認事項を見る</span>
+							<span
+								class="booking-confirmation__toggle"
+								aria-hidden="true"
+							></span>
+						</summary>
+						<ol class="booking-confirmation__details-list">
+							<li class="booking-confirmation__details-item">
+								<p class="booking-confirmation__details-title">食後すぐの方</p>
+								<p class="booking-confirmation__details-text">
+									体調不良や吐き気につながる可能性があるため、食後すぐのご利用はお控えください。
+								</p>
+							</li>
+							<li class="booking-confirmation__details-item">
+								<p class="booking-confirmation__details-title">
+									飲酒している方、施術後に飲酒予定の方
+								</p>
+								<p class="booking-confirmation__details-text">
+									施術後に酔いが回りやすくなったり、転倒、頭痛、吐き気などにつながる可能性があるため、ご利用をお断りする場合があります。
+								</p>
+							</li>
+							<li class="booking-confirmation__details-item">
+								<p class="booking-confirmation__details-title">
+									感染症の疑いがある方、医師から施術を止められているけががある方
+								</p>
+								<p class="booking-confirmation__details-text">
+									新型コロナウイルス、インフルエンザ、水虫、疥癬など、周囲へ感染する可能性がある場合は、感染拡大防止のためご利用をお控えください。
+								</p>
+							</li>
+							<li class="booking-confirmation__details-item">
+								<p class="booking-confirmation__details-title">妊娠中の方</p>
+								<p class="booking-confirmation__details-text">
+									安全面を考慮し、妊娠中の方への施術はお断りしています。
+								</p>
+							</li>
+							<li class="booking-confirmation__details-item">
+								<p class="booking-confirmation__details-title">
+									セクハラ、モラハラ、カスタマーハラスメント
+								</p>
+								<p class="booking-confirmation__details-text">
+									スタッフや他者へのハラスメント行為が確認された場合は、ご利用をお断りします。
+								</p>
+							</li>
+							<li class="booking-confirmation__details-item">
+								<p class="booking-confirmation__details-title">
+									店内での喫煙、ペットの同伴
+								</p>
+								<p class="booking-confirmation__details-text">
+									建物内は禁煙です。また、アレルギー等への配慮から、ペットの同伴はご遠慮ください。
+								</p>
+							</li>
+						</ol>
+						<p class="booking-confirmation__consult">
+							体調やけがについて不安がある場合は、ご予約前にご相談ください。
+						</p>
+					</details>
+				</div>
+
+				<div class="booking-confirmation__actions">
+					<button
+						class="c-button booking-confirmation__back"
+						type="button"
+						data-bc-close="back_button"
+					>
+						戻る
+					</button>
+					<a
+						class="c-button booking-confirmation__confirm"
+						href="https://online.peakmanager.com/ja/i3p1x8/book"
+						target="_blank"
+						rel="noopener noreferrer"
+						data-bc-confirm
+					>
+						<span>確認して予約へ進む</span>
+						<svg
+							class="c-button__chevron"
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							aria-hidden="true"
+						>
+							<path
+								d="M9 5l7 7-7 7"
+								stroke="currentColor"
+								stroke-width="2.4"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</a>
+				</div>
+				<p class="booking-confirmation__note">
+					内容をご確認のうえ、予約ページへお進みください。
+				</p>
+			</section>
 		</div>
 
 		<script src="assets/js/main.js" defer></script>
