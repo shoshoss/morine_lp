@@ -18,6 +18,9 @@ Thumbs.db
 .claude/skills/ui-styling/
 .claude/skills/ui-ux-pro-max/
 
+# Codex / AI agent - reinstallable skills
+.agents/skills/
+
 # Environment
 .env
 .env.*
