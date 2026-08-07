@@ -156,9 +156,9 @@
       isOpen = true;
 
       if (closeBtn) {
-        closeBtn.focus();
+        closeBtn.focus({ preventScroll: true });
       } else {
-        dialog.focus();
+        dialog.focus({ preventScroll: true });
       }
       document.addEventListener("keydown", onKeydown);
 
@@ -179,11 +179,16 @@
       runAfterTransition(dialog, () => {
         root.hidden = true;
         setBackgroundInert(false);
+        // smooth-scroll を一時無効化し、元の位置へ瞬時に戻す（無駄なスクロールを防ぐ）
+        const html = document.documentElement;
+        const prevBehavior = html.style.scrollBehavior;
+        html.style.scrollBehavior = "auto";
         document.body.classList.remove("bc-scroll-locked");
         document.body.style.top = "";
         window.scrollTo(0, scrollY);
+        html.style.scrollBehavior = prevBehavior;
         if (lastTrigger && typeof lastTrigger.focus === "function") {
-          lastTrigger.focus();
+          lastTrigger.focus({ preventScroll: true });
         }
       });
 
